@@ -1,1 +1,21 @@
-<p>faq-list works!</p>
+<mat-toolbar class="search-block mat-elevation-z4">
+    <mat-toolbar-row style="padding: 0 5px;">
+        <mat-icon>search</mat-icon>
+        <mat-form-field>
+            <input matInput [(ngModel)]="searchText" placeholder="" #searchbar>
+        </mat-form-field>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-list>
+    <mat-list-item *ngFor="let item of list | filter: searchText" (click)="log(item.questionId)">
+        <mat-icon mat-list-avatar style="width:auto">question_answer</mat-icon>
+        <div mat-line>{{item.question}}</div>
+        <div mat-line>Asked: {{item.asked}}</div>
+    </mat-list-item>
+    <mat-list-item *ngIf="(list | filter: searchText).length === 0">
+        <mat-icon mat-list-avatar>error</mat-icon>
+        <div mat-line>0 results</div>
+        <div mat-line>No matching questions</div>
+    </mat-list-item>
+</mat-list>

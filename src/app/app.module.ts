@@ -10,6 +10,8 @@ import { FaqListComponent } from './components/faq-list/faq-list.component';
 import { FaqSolutionComponent } from './components/faq-solution/faq-solution.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     FaqListComponent,
     FaqSolutionComponent,
     TicketComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FilterPipe
   ],
   imports: [
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
