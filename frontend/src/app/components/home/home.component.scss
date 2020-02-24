@@ -32,7 +32,26 @@
   z-index: 1;
 }
 
+#mobile-div {
+  text-align: center;
+  padding: 8px;
+}
+
 .large-button {
   height: 40px;
   width: 300px;
+}
+
+#mobile-div {
+  background-color: #ffffff;
+  height: 98%;
+  overflow-y: auto;
+}
+
+#mobile-text {
+  color: #000000;
+}
+
+.mobile-link  {
+  color: #000000;
 }

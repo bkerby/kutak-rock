@@ -9,7 +9,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
 const routes: Routes = [
 { path: 'home',      component: HomeComponent },
 { path: 'faq',      component: FaqListComponent },
-{ path: 'solution',      component: FaqSolutionComponent },
+{ path: 'solution/:id',      component: FaqSolutionComponent },
 { path: 'ticket',      component: TicketComponent },
 { path: '', redirectTo: '/home', pathMatch: 'full'},
 { path: '**', component: HomeComponent }];

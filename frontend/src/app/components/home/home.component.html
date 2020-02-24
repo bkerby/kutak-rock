@@ -1,18 +1,39 @@
-
-<div id="buttons">
-    <a class="large-button" routerLink="/faq" mat-raised-button color="secondary">Frequently Asked Questions</a>
-    <br><br>
-    <a class="large-button" routerLink="/ticket" mat-raised-button color="secondary">Create Ticket</a>
-    <br><br>
-    <a  color="secondary">Call: (###) - ### - ####</a>
-    <br><br>
-    <a color="secondary">Email: kutakrocktechdesk@gmail.com</a>
+<div id="desktop-div" *ngIf="!mobileQuery.matches">
+    <div id="buttons">
+        <a class="large-button" routerLink="/faq" mat-raised-button color="accent">Frequently Asked Questions</a>
+        <br><br>
+        <a class="large-button" routerLink="/ticket" mat-raised-button color="accent">Create Ticket</a>
+        <br><br>
+        <a  color="secondary">Call: (###) - ### - ####</a>
+        <br><br>
+        <a color="secondary">Email: kutakrocktechdesk@gmail.com</a>
+    </div>
+    <div id="text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum malesuada magna vitae eleifend.
+        Proin laoreet lorem elit, vel sagittis felis euismod eu. Maecenas sit amet dapibus nibh, id sodales tellus.
+        In rhoncus dui et velit feugiat scelerisque. Nullam finibus tortor vel sodales auctor.
+        Mauris convallis nibh venenatis, iaculis tellus non, porta purus. Sed rutrum ligula at sollicitudin egestas.
+    </div>
+    <img id="kutak-rock" src="../../../assets/kutakRock.png" />
+    <div id="triangle"></div>
 </div>
-<div id="text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum malesuada magna vitae eleifend.
-    Proin laoreet lorem elit, vel sagittis felis euismod eu. Maecenas sit amet dapibus nibh, id sodales tellus.
-    In rhoncus dui et velit feugiat scelerisque. Nullam finibus tortor vel sodales auctor.
-    Mauris convallis nibh venenatis, iaculis tellus non, porta purus. Sed rutrum ligula at sollicitudin egestas.
+<div id="mobile-div" *ngIf="mobileQuery.matches">
+    <img id="mobile-kutak-rock" src="../../../assets/kutakRock.png" width="98%"/>
+    <hr>
+    <div id="mobile-buttons">
+        <a class="large-button" routerLink="/faq" mat-raised-button color="accent">Frequently Asked Questions</a>
+        <br><br>
+        <a class="large-button" routerLink="/ticket" mat-raised-button color="accent">Create Ticket</a>
+        <br><br>
+        <a class="mobile-link" color="secondary">Call: (###) - ### - ####</a>
+        <br><br>
+        <a class="mobile-link" color="secondary">Email: kutakrocktechdesk@gmail.com</a>
+    </div>
+    <hr>
+    <div id="mobile-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum malesuada magna vitae eleifend.
+        Proin laoreet lorem elit, vel sagittis felis euismod eu. Maecenas sit amet dapibus nibh, id sodales tellus.
+        In rhoncus dui et velit feugiat scelerisque. Nullam finibus tortor vel sodales auctor.
+        Mauris convallis nibh venenatis, iaculis tellus non, porta purus. Sed rutrum ligula at sollicitudin egestas.
+    </div>
 </div>
-<img id="kutak-rock" src="../../../assets/kutakRock.png" />
-<div id="triangle"></div>

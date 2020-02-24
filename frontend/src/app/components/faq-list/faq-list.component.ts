@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { listData } from 'src/app/shared/list';
+import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
   selector: 'app-faq-list',
@@ -11,12 +12,8 @@ export class FaqListComponent implements OnInit {
   list = listData.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
   searchText = '';
 
-  constructor() {}
+  constructor(public utils: UtilitiesService) {}
 
   ngOnInit() {}
-
-  log(id: number) {
-    console.log('Question Clicked: ' + id);
-  }
 
 }

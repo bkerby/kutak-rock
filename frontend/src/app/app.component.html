@@ -3,7 +3,11 @@
     <button mat-icon-button (click)="snav.toggle()" [style.display]="mobileQuery.matches ? '' : 'none'">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Kutak Rock Tech Support</h1>
+    <h1 class="example-app-name">
+      <span style="color: #005cb9;">KUTAK</span>
+      <span style="color: #636569">ROCK</span>
+      Tech Support
+    </h1>
   </mat-toolbar>
 
   <mat-sidenav-container class="example-sidenav-container" autosize [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
@@ -14,12 +18,12 @@
         <a mat-list-item routerLink="/ticket">Create Ticket</a>
         <a mat-list-item routerLink="/faq">FAQ</a>
       </mat-nav-list>
-      <br>
+      <hr>
       <mat-nav-list>
         <a mat-list-item routerLink=".">(###) - ### - ####</a>
         <a mat-list-item routerLink=".">KutakRockTechDesk@gmail.com</a>
       </mat-nav-list>
-      <div id="dev-div">
+      <div id="dev-div" *ngIf="isLocal()">
         DEV:<br>
         Mobile: {{ mobileQuery.matches }}
       </div>

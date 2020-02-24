@@ -1,1 +1,22 @@
-<p>ticket works!</p>
+<form style="padding: 8px;">
+  <mat-form-field style="width: 100%;" color="accent">
+    <input #inputField type="text" placeholder="Enter Issue" aria-label="Number" matInput [formControl]="myControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete (optionSelected)="optionSelected($event.option.value)" #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option.question }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field style="width: 100%;" color="accent">
+    <textarea type="text" placeholder="Description" aria-label="Issue" matInput rows="5" [formControl]="myControl"
+      [(ngModel)]="searchText"></textarea>
+    <mat-file-upload [labelText]="''" [selectButtonText]="'Add Attachment'"
+      [selectFilesButtonType]="button" [uploadButtonText]="'Upload'" [uploadButtonType]="submit"
+      [allowMultipleFiles]="true" [showUploadButton]="true"
+      [acceptedTypes]="'*'" color="accent">
+    </mat-file-upload>
+  </mat-form-field>
+  <button mat-raised-button type="reset">Reset</button>&nbsp;
+  <button mat-raised-button type="submit" color="accent">Submit Ticket</button>
+</form>
