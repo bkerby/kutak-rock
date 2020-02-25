@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "krts"
+  "defaultProject": "krts",
+  "cli": {
+    "analytics": "06d6d8f4-83cc-4b78-8ddf-db43bc7f3745"
+  }
 }

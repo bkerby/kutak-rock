@@ -1,6 +1,7 @@
 <form style="padding: 8px;">
   <mat-form-field style="width: 100%;" color="accent">
-    <input #inputField type="text" placeholder="Enter Issue" aria-label="Number" matInput [formControl]="myControl"
+    <mat-label>Enter Issue</mat-label>
+    <input #inputField type="text" placeholder="Ex: Cannot connect to Internet" aria-label="Number" matInput [formControl]="myControl"
       [matAutocomplete]="auto">
     <mat-autocomplete (optionSelected)="optionSelected($event.option.value)" #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -9,7 +10,8 @@
     </mat-autocomplete>
   </mat-form-field>
   <mat-form-field style="width: 100%;" color="accent">
-    <textarea type="text" placeholder="Description" aria-label="Issue" matInput rows="5" [formControl]="myControl"
+    <mat-label>Description</mat-label>
+    <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Issue" matInput rows="5" [formControl]="myControl"
       [(ngModel)]="searchText"></textarea>
     <mat-file-upload [labelText]="''" [selectButtonText]="'Add Attachment'"
       [selectFilesButtonType]="button" [uploadButtonText]="'Upload'" [uploadButtonType]="submit"
