@@ -13,6 +13,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/filter.pipe';
 import { MatFileUploadModule } from 'mat-file-upload';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,12 @@ import { MatFileUploadModule } from 'mat-file-upload';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     MatFileUploadModule
+  ],
+  entryComponents: [
+    ConfirmationDialogComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

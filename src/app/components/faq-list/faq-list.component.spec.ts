@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FaqListComponent } from './faq-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from 'src/app/shared/material.module';
+import { FormsModule } from '@angular/forms';
 
 describe('FaqListComponent', () => {
   let component: FaqListComponent;
@@ -8,7 +11,8 @@ describe('FaqListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FaqListComponent ]
+      declarations: [ FaqListComponent ],
+      imports: [ RouterTestingModule, MaterialModule, FormsModule ]
     })
     .compileComponents();
   }));

@@ -1,8 +1,8 @@
-<form style="padding: 8px;">
+<div style="padding: 8px;">
   <mat-form-field style="width: 100%;" color="accent">
     <mat-label>Enter Issue</mat-label>
     <input #inputField type="text" placeholder="Ex: Cannot connect to Internet" aria-label="Number" matInput [formControl]="myControl"
-      [matAutocomplete]="auto">
+      [matAutocomplete]="auto" [(ngModel)]="subject" required>
     <mat-autocomplete (optionSelected)="optionSelected($event.option.value)" #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{ option.question }}
@@ -12,7 +12,7 @@
   <mat-form-field style="width: 100%;" color="accent">
     <mat-label>Description</mat-label>
     <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Issue" matInput rows="5" [formControl]="myControl"
-      [(ngModel)]="searchText"></textarea>
+      [(ngModel)]="description" required></textarea>
     <mat-file-upload [labelText]="''" [selectButtonText]="'Add Attachment'"
       [selectFilesButtonType]="button" [uploadButtonText]="'Upload'" [uploadButtonType]="submit"
       [allowMultipleFiles]="true" [showUploadButton]="true"
@@ -20,5 +20,5 @@
     </mat-file-upload>
   </mat-form-field>
   <button mat-raised-button type="reset">Reset</button>&nbsp;
-  <button mat-raised-button type="submit" color="accent">Submit Ticket</button>
-</form>
+  <button mat-raised-button type="submit" color="accent" (click)="createTicket()">Submit Ticket</button>
+</div>

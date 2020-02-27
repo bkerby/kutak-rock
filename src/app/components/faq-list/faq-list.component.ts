@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { listData } from 'src/app/shared/list';
-import { UtilitiesService } from 'src/app/services/utilities.service';
+import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
   selector: 'app-faq-list',

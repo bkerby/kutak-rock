@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class FaqSolutionComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
-  question: any;
+  question: any = '';
   
 
   ngOnInit() {
