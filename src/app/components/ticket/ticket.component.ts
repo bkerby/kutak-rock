@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { listData } from 'src/app/shared/list';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators'
+import { startWith, map } from 'rxjs/operators';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import { TicketService } from 'src/app/services/ticket/ticket.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -48,7 +48,7 @@ export class TicketComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.utils.openSnackBar('Enter all Required Information', null)
+        this.utils.openSnackBar('Enter all Required Information', null);
       });
   }
 

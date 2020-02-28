@@ -9,19 +9,19 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class HomeComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void;
+  private mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) { 
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 1200px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
   ngOnInit() {
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+    this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 
 }

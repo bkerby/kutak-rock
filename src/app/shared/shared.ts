@@ -1,3 +1,3 @@
-export class shared {
-    public static baseUrl = 'http://kutakrockwcf.azurewebsites.net/'
+export class Shared {
+    public static baseUrl = 'http://kutakrockwcf.azurewebsites.net/';
 }

@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/7e7a4479-c356-4e78-8b0b-86de5fb5267c/resourceGroups/krts/providers/Microsoft.Web/sites/krts",
-    "appService.deploySubpath": ""
-}
