@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -21,7 +21,7 @@ export class TicketComponent implements OnInit {
   myControl: FormControl = new FormControl();
   filteredOptions: Observable<string[]>;
 
-  constructor(public utils: UtilitiesService, public dialog: MatDialog) { }
+  constructor(public utils: UtilitiesService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -29,6 +29,7 @@ export class TicketComponent implements OnInit {
         startWith(''),
         map(val => val.length >= 1 ? this.filter(val) : [])
       );
+    this.cdr.detectChanges();
   }
 
   filter(val: string): any[] {
