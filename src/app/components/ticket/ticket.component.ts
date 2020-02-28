@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { listData } from 'src/app/shared/list';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
-import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
-import { TicketService } from 'src/app/services/ticket/ticket.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
+import { listData } from 'src/app/shared/list';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
@@ -22,7 +21,7 @@ export class TicketComponent implements OnInit {
   myControl: FormControl = new FormControl();
   filteredOptions: Observable<string[]>;
 
-  constructor(public utils: UtilitiesService, private ticketService: TicketService, public dialog: MatDialog) { }
+  constructor(public utils: UtilitiesService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -41,7 +40,7 @@ export class TicketComponent implements OnInit {
   }
 
   createTicket() {
-    this.ticketService.get(this.subject, this.description, this.proirity, this.computerId).subscribe(
+    this.utils.createTicket(this.subject, this.description, this.proirity, this.computerId).subscribe(
       (data) => {
         this.dialog.open(ConfirmationDialogComponent);
         console.log(data);
