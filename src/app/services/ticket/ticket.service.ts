@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UtilitiesService } from '../utilities/utilities.service';
 import { from } from 'rxjs';
+import { shared } from 'src/app/shared/shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
 
-  constructor(private http: HttpClient, private utils: UtilitiesService) { }
+  constructor() { }
 
   get(subject: string, description: string, proirity: number, computerId: number) {
     return from(
       fetch(
-        `http://kutakrockwcf.azurewebsites.net/Database_Service.svc/CreateTicket/${subject}/${description}/${proirity}/${computerId}`,
+        `${shared.baseUrl}/CreateTicket/${subject}/${description}/${proirity}/${computerId}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -23,9 +22,5 @@ export class TicketService {
         }
       )
     )
-  }
-
-  get2(subject: string, description: string, proirity: number, computerId: number) {
-    return this.http.get(`Database_Service.svc/CreateTicket/${subject}/${description}/${proirity}/${computerId}`);
   }
 }
