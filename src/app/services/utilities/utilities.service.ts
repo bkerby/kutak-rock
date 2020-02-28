@@ -10,7 +10,7 @@ export class UtilitiesService {
   constructor(private router: Router, private snackBar: MatSnackBar) { }
 
   goToSolution(questionId) {
-    this.router.navigate([`solution/${questionId}`])
+    this.router.navigate([`solution/${questionId}`]);
   }
 
   objectToString(obj: any): string {
