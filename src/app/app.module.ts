@@ -12,7 +12,6 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/filter.pipe';
-import { MatFileUploadModule } from 'mat-file-upload';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -32,8 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    MatFileUploadModule
+    FormsModule
   ],
   entryComponents: [
     ConfirmationDialogComponent,
