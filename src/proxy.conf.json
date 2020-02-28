@@ -1,7 +1,1 @@
-{
-  "/Database_Service.svc": {
-    "target": "http://kutakrockwcf.azurewebsites.net/",
-    "secure": false,
-    "changeOrigin": true
-  }
-}
+{}
