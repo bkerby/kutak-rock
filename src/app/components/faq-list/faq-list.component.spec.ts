@@ -4,6 +4,8 @@ import { FaqListComponent } from './faq-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from 'src/app/shared/filter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FaqListComponent', () => {
   let component: FaqListComponent;
@@ -11,8 +13,8 @@ describe('FaqListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FaqListComponent ],
-      imports: [ RouterTestingModule, MaterialModule, FormsModule ]
+      declarations: [ FaqListComponent, FilterPipe ],
+      imports: [ RouterTestingModule, MaterialModule, FormsModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   }));

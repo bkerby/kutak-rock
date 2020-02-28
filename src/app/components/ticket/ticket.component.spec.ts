@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipe } from 'src/app/shared/filter.pipe';
 
 describe('TicketComponent', () => {
   let component: TicketComponent;

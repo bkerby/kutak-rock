@@ -13,6 +13,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { UtilitiesService } from './services/utilities/utilities.service';
 
 @NgModule({
   declarations: [
@@ -33,10 +34,15 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule
   ],
+  exports: [
+    FilterPipe
+  ],
   entryComponents: [
-    ConfirmationDialogComponent,
+    ConfirmationDialogComponent
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
