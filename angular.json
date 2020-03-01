@@ -10,17 +10,7 @@
           "style": "scss"
         }
       },
-      "apps": [
-        {
-          "root": "src",
-          "outDir": "dist",
-          "assets": [
-            "assets",
-            "favicon.ico",
-            "web.config"
-          ]
-        }
-      ],
+      "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -35,7 +25,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
