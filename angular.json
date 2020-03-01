@@ -10,7 +10,17 @@
           "style": "scss"
         }
       },
-      "root": "",
+      "apps": [
+        {
+          "root": "src",
+          "outDir": "dist",
+          "assets": [
+            "assets",
+            "favicon.ico",
+            "web.config"
+          ]
+        }
+      ],
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
