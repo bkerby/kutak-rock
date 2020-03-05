@@ -4,7 +4,7 @@
     <input #inputField type="text" placeholder="Ex: Cannot connect to Internet" aria-label="Number" matInput [formControl]="myControl"
       [matAutocomplete]="auto" [(ngModel)]="subject" required>
     <mat-autocomplete (optionSelected)="optionSelected($event.option.value)" #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      <mat-option *ngFor="let option of options | filter: subject" [value]="option">
         {{ option.question }}
       </mat-option>
     </mat-autocomplete>
