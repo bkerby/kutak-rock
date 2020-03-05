@@ -19,22 +19,21 @@ export class TicketComponent implements OnInit {
   proirity = 0;
   computerId = 6;
   myControl: FormControl = new FormControl();
-  filteredOptions: Observable<string[]>;
 
   constructor(public utils: UtilitiesService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
+    /* this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(val => val.length >= 1 ? this.filter(val) : [])
       );
-    this.cdr.detectChanges();
+    this.cdr.detectChanges(); */
   }
 
-  filter(val: string): any[] {
+  /* filter(val: string): any[] {
     return this.options.filter(i => i.question.toLowerCase().includes(val.toLowerCase()));
-  }
+  } */
 
   optionSelected(question: any) {
     this.utils.goToSolution(question.questionId);
