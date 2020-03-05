@@ -43,7 +43,9 @@ export class TicketComponent implements OnInit {
   createTicket() {
     this.utils.createTicket(this.subject, this.description, this.proirity, this.computerId).subscribe(
       (data) => {
-        this.dialog.open(ConfirmationDialogComponent);
+        this.dialog.open(ConfirmationDialogComponent, {
+          data: data
+        });
         console.log(data);
       },
       (error) => {
