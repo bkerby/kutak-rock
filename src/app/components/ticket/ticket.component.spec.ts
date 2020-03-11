@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from 'src/app/shared/filter.pipe';
 
 describe('TicketComponent', () => {
@@ -13,8 +14,8 @@ describe('TicketComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TicketComponent ],
-      imports: [ RouterTestingModule, MaterialModule, ReactiveFormsModule, BrowserAnimationsModule ]
+      declarations: [ TicketComponent, FilterPipe ],
+      imports: [ RouterTestingModule, MaterialModule, ReactiveFormsModule, BrowserAnimationsModule, HttpClientModule ]
     })
     .compileComponents();
   }));
