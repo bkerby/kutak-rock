@@ -33,12 +33,12 @@ export class TicketComponent implements OnInit {
   createTicket() {
     this.waitingForResponse = true;
     this.utils.createTicket(this.subject, this.description, this.proirity, this.computerId).subscribe(
-      (data) => {
+      (response) => {
         this.dialog.open(ConfirmationDialogComponent, {
-          data: data
+          data: response
         });
         this.waitingForResponse = false;
-        console.log(data);
+        console.log(response);
       },
       (error) => {
         console.log(error);

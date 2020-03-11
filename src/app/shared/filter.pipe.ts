@@ -8,10 +8,10 @@ export class FilterPipe implements PipeTransform {
   transform(items: any[], searchText: string): any[] {
     if (!items) { return []; }
     if (!searchText) { return items; }
-    this.keywordList = ke.extract(searchText.toLowerCase(),{
-      language:"english",
+    this.keywordList = ke.extract(searchText.toLowerCase(), {
+      language: 'english',
       remove_digits: false,
-      return_changed_case:true,
+      return_changed_case: true,
       remove_duplicates: true
     });
 
@@ -20,11 +20,11 @@ export class FilterPipe implements PipeTransform {
     });
   }
 
-  contains(target, pattern){
+  contains(target, pattern) {
     let value = 0;
-    pattern.forEach(function(word){
-      if (target.includes(word)) value++;
+    pattern.forEach((word) => {
+      if (target.includes(word)) { value++; }
     });
-    return (value > 0)
+    return (value > 0);
   }
 }
