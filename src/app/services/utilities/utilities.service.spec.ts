@@ -8,7 +8,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 describe('UtilitiesService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [ AppRoutingModule, MatSnackBarModule, HttpClientModule ],
-    providers: [ UtilitiesService, HttpClient ]
+    providers: [ UtilitiesService, HttpClient, HttpClientModule ]
   }));
 
   it('should be created', () => {

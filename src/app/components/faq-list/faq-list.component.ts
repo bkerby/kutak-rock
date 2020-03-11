@@ -13,6 +13,10 @@ export class FaqListComponent implements OnInit {
 
   constructor(public utils: UtilitiesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.utils.getFAQ().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
 }
