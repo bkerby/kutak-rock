@@ -19,38 +19,41 @@ export class TicketComponent implements OnInit {
   proirity = 0;
   computerId = 6;
   myControl: FormControl = new FormControl();
+  waitingForResponse = false;
 
   constructor(public utils: UtilitiesService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    /* this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => val.length >= 1 ? this.filter(val) : [])
-      );
-    this.cdr.detectChanges(); */
   }
-
-  /* filter(val: string): any[] {
-    return this.options.filter(i => i.question.toLowerCase().includes(val.toLowerCase()));
-  } */
 
   optionSelected(question: any) {
     this.utils.goToSolution(question.questionId);
   }
 
   createTicket() {
+    this.waitingForResponse = true;
     this.utils.createTicket(this.subject, this.description, this.proirity, this.computerId).subscribe(
       (data) => {
         this.dialog.open(ConfirmationDialogComponent, {
           data: data
         });
+        this.waitingForResponse = false;
         console.log(data);
       },
       (error) => {
         console.log(error);
+        this.waitingForResponse = false;
         this.utils.openSnackBar('Enter all Required Information', null);
       });
+  }
+
+  isFormVerified(): boolean {
+    return this.subject !== '' && this.description !== '';
+  }
+
+  clear() {
+    this.subject = '';
+    this.description = '';
   }
 
 }

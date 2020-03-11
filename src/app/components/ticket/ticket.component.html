@@ -1,8 +1,8 @@
 <div style="padding: 8px;">
   <mat-form-field style="width: 100%;">
     <mat-label>Enter Issue</mat-label>
-    <input #inputField type="text" placeholder="Ex: Cannot connect to Internet" aria-label="Number" matInput [formControl]="myControl"
-      [matAutocomplete]="auto" [(ngModel)]="subject" required>
+    <input #inputField type="text" placeholder="Ex: Cannot connect to Internet" aria-label="Number" matInput
+      [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="subject" required>
     <mat-autocomplete (optionSelected)="optionSelected($event.option.value)" #auto="matAutocomplete">
       <mat-option *ngFor="let option of options | filter: subject" [value]="option">
         {{ option.question }}
@@ -11,14 +11,23 @@
   </mat-form-field>
   <mat-form-field style="width: 100%;">
     <mat-label>Description</mat-label>
-    <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Issue" matInput rows="5" [formControl]="myControl"
-      [(ngModel)]="description" required></textarea>
+    <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Issue" matInput rows="5"
+      [formControl]="myControl" [(ngModel)]="description" required></textarea>
     <!-- <mat-file-upload [labelText]="''" [selectButtonText]="'Add Attachment'"
       [selectFilesButtonType]="button" [uploadButtonText]="'Upload'" [uploadButtonType]="submit"
       [allowMultipleFiles]="true" [showUploadButton]="true"
       [acceptedTypes]="'*'" color="accent">
     </mat-file-upload> -->
   </mat-form-field>
-  <button mat-raised-button type="reset">Reset</button>&nbsp;
-  <button mat-raised-button type="submit" color="primary" (click)="createTicket()">Submit Ticket</button>
+  <button mat-raised-button  (click)="clear()" >Clear</button>&nbsp;
+  <button mat-raised-button color="primary" (click)="createTicket()" [disabled]="!isFormVerified()">Submit Ticket</button>
+</div>
+<div *ngIf="waitingForResponse" class="overlay">
+  <div class="center">
+    <mat-card>
+      <mat-progress-spinner diameter=200 mode="indeterminate" color="primary"></mat-progress-spinner>
+      <br>
+      Submitting your ticket
+    </mat-card>
+  </div>
 </div>
