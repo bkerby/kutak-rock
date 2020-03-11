@@ -18,10 +18,17 @@
         <a mat-list-item routerLink="/ticket">Create Ticket</a>
         <a mat-list-item routerLink="/faq">FAQ</a>
       </mat-nav-list>
-      <hr>
       <mat-nav-list>
-        <a mat-list-item href="tel:402-739-1670">(###) - ### - ####</a>
-        <a mat-list-item href="mailto:kutakrocktechdesk@gmail.com">KutakRockTechDesk@gmail.com</a>
+        <h2 matSubheader>Specific Request</h2>
+        <a mat-list-item target="_blank" href="https://krsupport.iqtrack.com/ServiceRequest.aspx?ServiceRequestId=1084">Home Docking Station</a>
+        <a mat-list-item target="_blank" href="https://krsupport.iqtrack.com/ServiceRequest.aspx?ServiceRequestId=1083">Internet Access</a>
+        <a mat-list-item target="_blank" href="https://krsupport.iqtrack.com/ServiceRequest.aspx?ServiceRequestId=1076">New Email Group</a>
+      </mat-nav-list>
+      <mat-nav-list>
+        <h2 matSubheader>Contact</h2>
+        <a mat-list-item href="tel:1111">Internal 1111</a>
+        <a mat-list-item href="tel:4029308000">External (402) 930-8000</a>
+        <a mat-list-item href="mailto:helpdesk@kutakrock.com">helpdesk@kutakrock.com</a>
       </mat-nav-list>
       <div id="dev-div" *ngIf="isLocal()">
         DEV:<br>
