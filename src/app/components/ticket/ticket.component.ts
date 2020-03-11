@@ -1,8 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 import { listData } from 'src/app/shared/list';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -20,8 +18,9 @@ export class TicketComponent implements OnInit {
   computerId = 6;
   myControl: FormControl = new FormControl();
   waitingForResponse = false;
+  confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent>;
 
-  constructor(public utils: UtilitiesService, public dialog: MatDialog, private cdr: ChangeDetectorRef) { }
+  constructor(public utils: UtilitiesService, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -34,16 +33,20 @@ export class TicketComponent implements OnInit {
     this.waitingForResponse = true;
     this.utils.createTicket(this.subject, this.description, this.proirity, this.computerId).subscribe(
       (response) => {
-        this.dialog.open(ConfirmationDialogComponent, {
+        this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
           data: response
         });
-        this.waitingForResponse = false;
+        this.confirmationDialogRef.afterClosed().subscribe(() => {
+          this.clear();
+          this.utils.goToHome();
+        });
         console.log(response);
+        this.waitingForResponse = false;
       },
       (error) => {
         console.log(error);
         this.waitingForResponse = false;
-        this.utils.openSnackBar('Enter all Required Information', null);
+        this.utils.openSnackBar('Error: please try again', null);
       });
   }
 

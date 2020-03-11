@@ -21,6 +21,9 @@
   </mat-form-field>
   <button mat-raised-button  (click)="clear()" >Clear</button>&nbsp;
   <button mat-raised-button color="primary" (click)="createTicket()" [disabled]="!isFormVerified()">Submit Ticket</button>
+  <div *ngIf="utils.isLocal()">
+    <button (click)="createTicket()">Error test</button>
+  </div>
 </div>
 <div *ngIf="waitingForResponse" class="overlay">
   <div class="center">

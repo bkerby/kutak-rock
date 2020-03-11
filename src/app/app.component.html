@@ -9,7 +9,6 @@
       Tech Support
     </h1>
   </mat-toolbar>
-
   <mat-sidenav-container class="example-sidenav-container" autosize [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56" [opened]="!mobileQuery.matches">
@@ -19,24 +18,22 @@
         <a mat-list-item routerLink="/faq">FAQ</a>
       </mat-nav-list>
       <mat-nav-list>
-        <h2 matSubheader>Specific Request</h2>
+        <h1 matSubheader>Specific Request</h1>
         <a mat-list-item target="_blank" href="https://krsupport.iqtrack.com/ServiceRequest.aspx?ServiceRequestId=1084">Home Docking Station</a>
         <a mat-list-item target="_blank" href="https://krsupport.iqtrack.com/ServiceRequest.aspx?ServiceRequestId=1083">Internet Access</a>
         <a mat-list-item target="_blank" href="https://krsupport.iqtrack.com/ServiceRequest.aspx?ServiceRequestId=1076">New Email Group</a>
       </mat-nav-list>
       <mat-nav-list>
-        <h2 matSubheader>Contact</h2>
+        <h1 matSubheader>Contact</h1>
         <a mat-list-item href="tel:1111">Internal: 1111</a>
         <a mat-list-item href="tel:4029308000">External: (402) 930-8000</a>
         <a mat-list-item href="mailto:helpdesk@kutakrock.com">helpdesk@kutakrock.com</a>
       </mat-nav-list>
-      <div id="dev-div" *ngIf="isLocal()">
+      <div id="dev-div" *ngIf="utils.isLocal()">
         DEV:<br>
         Mobile: {{ mobileQuery.matches }}
       </div>
-
     </mat-sidenav>
-
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
