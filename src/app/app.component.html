@@ -1,12 +1,10 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <mat-toolbar class="example-toolbar">
+  <mat-toolbar class="example-toolbar" color="primary">
     <button mat-icon-button (click)="snav.toggle()" [style.display]="mobileQuery.matches ? '' : 'none'">
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="example-app-name">
-      <span style="color: #005cb9;">KUTAK</span>
-      <span style="color: #636569">ROCK</span>
-      Tech Support
+      KUTAK ROCK Ticket System
     </h1>
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container" autosize [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
