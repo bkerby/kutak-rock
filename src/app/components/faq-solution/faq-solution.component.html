@@ -6,6 +6,11 @@
 </div>
 <hr>
 <h3>Solution</h3>
-<div id="text">
-  {{ question?.solution }}
+<div *ngIf="question?.answers.length > 0" id="text">
+  <div *ngFor="let a of question?.answers">
+    <mat-card>
+      {{ a }}
+    </mat-card>
+    <br>
+  </div>
 </div>

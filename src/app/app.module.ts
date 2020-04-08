@@ -14,6 +14,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { UtilitiesService } from './services/utilities/utilities.service';
+import { FaqCreateComponent } from './components/faq-create/faq-create.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UtilitiesService } from './services/utilities/utilities.service';
     FaqSolutionComponent,
     TicketComponent,
     ConfirmationDialogComponent,
-    FilterPipe
+    FilterPipe,
+    FaqCreateComponent
   ],
   imports: [
     MaterialModule,

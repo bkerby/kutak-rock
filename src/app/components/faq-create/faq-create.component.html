@@ -1,0 +1,38 @@
+<div style="padding: 8px;">
+    <mat-form-field style="width: 100%;">
+        <mat-label>Enter Issue</mat-label>
+        <input #inputField type="text" placeholder="Ex: Cannot connect to Internet" aria-label="Issue" matInput
+            [formControl]="myControl" [(ngModel)]="subject" required>
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+        <mat-label>Description</mat-label>
+        <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Description" matInput rows="5"
+            [formControl]="myControl" [(ngModel)]="description" required></textarea>
+    </mat-form-field>
+    <mat-card>
+        <mat-form-field *ngFor="let a of answers; let index = index;trackBy:trackByIndex;" style="width: 100%;">
+            <mat-label>Answer {{index + 1}}</mat-label>
+            <textarea type="text" placeholder="Ex. To fix the issue" aria-label="Issue" matInput rows="3"
+                [(ngModel)]="answers[index]"></textarea>
+        </mat-form-field>
+        <mat-card-actions>
+            <button mat-button (click)="addAnswer()">Add Answer</button>
+            <button mat-button *ngIf="answers.length > 1" (click)="removeAnswer()">Remove Answer</button>
+        </mat-card-actions>
+    </mat-card>
+    <br>
+    <button mat-raised-button (click)="clear()">Clear</button>&nbsp;
+    <button mat-raised-button color="primary" (click)="submitFAQ()">Submit FAQ</button>
+    <div *ngIf="utils.isLocal()">
+        <button (click)="log(answers)">Error test</button>
+    </div>
+</div>
+<div *ngIf="waitingForResponse" class="overlay">
+    <div class="center">
+        <mat-card>
+            <mat-progress-spinner diameter=200 mode="indeterminate" color="primary"></mat-progress-spinner>
+            <br>
+            Submitting your ticket
+        </mat-card>
+    </div>
+</div>
