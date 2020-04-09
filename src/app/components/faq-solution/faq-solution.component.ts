@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { listData } from 'src/app/shared/list';
 import { ActivatedRoute } from '@angular/router';
+import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
 
 @Component({
   selector: 'app-faq-solution',
@@ -8,16 +8,28 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./faq-solution.component.scss']
 })
 export class FaqSolutionComponent implements OnInit, AfterViewInit {
-
-  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) { }
+  
   question: any = '';
+  list: any[] = [];
+
+  constructor(
+    public utils: UtilitiesService,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+  ) { }
 
   ngOnInit() {
+    this.utils.getFAQ().subscribe((data: any) => {
+      this.list = data.getFAQResult;
+      this.list.forEach(i => { i.asked = Math.floor(Math.random() * Math.floor(721)); });
+      this.list = this.list.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
+      const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+      this.question = this.list.filter(i => i.id === id)[0];
+      console.log(this.question);
+    });
   }
 
   ngAfterViewInit() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
-    this.question = listData.filter(i => i.questionId === id)[0];
     this.cdr.detectChanges();
   }
 }

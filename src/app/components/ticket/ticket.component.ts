@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UtilitiesService } from 'src/app/services/utilities/utilities.service';
-import { listData } from 'src/app/shared/list';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
@@ -11,7 +10,8 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit {
-  options = listData.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
+  list: any[] = [];
+  options: any[] = [];
   subject = '';
   description = '';
   proirity = 0;
@@ -23,10 +23,14 @@ export class TicketComponent implements OnInit {
   constructor(public utils: UtilitiesService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.utils.getFAQ().subscribe((data: any) => {
+      this.list = data.getFAQResult;
+      this.options = this.list.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
+    });
   }
 
   optionSelected(question: any) {
-    this.utils.goToSolution(question.questionId);
+    this.utils.goToSolution(question.id);
   }
 
   createTicket() {

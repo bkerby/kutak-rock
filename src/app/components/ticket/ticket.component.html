@@ -13,11 +13,6 @@
     <mat-label>Description</mat-label>
     <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Issue" matInput rows="5"
       [formControl]="myControl" [(ngModel)]="description" required></textarea>
-    <!-- <mat-file-upload [labelText]="''" [selectButtonText]="'Add Attachment'"
-      [selectFilesButtonType]="button" [uploadButtonText]="'Upload'" [uploadButtonType]="submit"
-      [allowMultipleFiles]="true" [showUploadButton]="true"
-      [acceptedTypes]="'*'" color="accent">
-    </mat-file-upload> -->
   </mat-form-field>
   <button mat-raised-button  (click)="clear()" >Clear</button>&nbsp;
   <button mat-raised-button color="primary" (click)="createTicket()" [disabled]="!isFormVerified()">Submit Ticket</button>

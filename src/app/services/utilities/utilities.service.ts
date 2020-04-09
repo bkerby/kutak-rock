@@ -9,6 +9,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UtilitiesService implements OnInit {
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'aJt5o3jQPOnkNuycYiuArPBPpPjwEHaR'
+    })
+  };
+
   constructor(private router: Router, private snackBar: MatSnackBar, private http: HttpClient) { }
 
   ngOnInit() {
@@ -16,23 +22,19 @@ export class UtilitiesService implements OnInit {
 
   /* REST Service call functions */
   createTicket(subject: string, description: string, proirity: number, computerId: number) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'my-auth-token'
-      })
-    };
-    return this.http.get(`${Shared.baseUrl}/CreateTicket/${subject}/${description}/${proirity}/${computerId}`);
+    return this.http.get(`${Shared.baseUrl}/CreateTicket/${subject}/${description}/${proirity}/${computerId}`, this.httpOptions);
   }
 
   getFAQ() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'my-auth-token'
-      })
-    };
-    return this.http.get(`${Shared.baseUrl}/GetFAQ`);
+    return this.http.get(`${Shared.baseUrl}/GetFAQ`, this.httpOptions);
+  }
+
+  createFAQ(subject: string, description: string) {
+    return this.http.get(`${Shared.baseUrl}/CreateFAQ/${subject}/${description}`, this.httpOptions);
+  }
+
+  createFAQAnswer(id: number, answer: string) {
+    return this.http.get(`${Shared.baseUrl}/CreateFAQAnswer/${id}/${answer}`, this.httpOptions);
   }
 
   /* Helper Navigation Functions */

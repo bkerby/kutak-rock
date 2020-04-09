@@ -4,11 +4,13 @@ import { HomeComponent } from './components/home/home.component';
 import { FaqListComponent } from './components/faq-list/faq-list.component';
 import { FaqSolutionComponent } from './components/faq-solution/faq-solution.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { FaqCreateComponent } from './components/faq-create/faq-create.component';
 
 
 const routes: Routes = [
 { path: 'home',      component: HomeComponent },
 { path: 'faq',      component: FaqListComponent },
+{ path: 'create',      component: FaqCreateComponent },
 { path: 'solution/:id',      component: FaqSolutionComponent },
 { path: 'ticket',      component: TicketComponent },
 { path: '', redirectTo: '/home', pathMatch: 'full'},
