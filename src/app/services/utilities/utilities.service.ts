@@ -37,6 +37,10 @@ export class UtilitiesService implements OnInit {
     return this.http.get(`${Shared.baseUrl}/CreateFAQAnswer/${id}/${answer}`, this.httpOptions);
   }
 
+  getIPInfo() {
+    return this.http.get(`https://ipinfo.io/json?token=922dd49b9f853e`);
+  }
+
   /* Helper Navigation Functions */
   goToSolution(questionId) {
     this.router.navigate([`solution/${questionId}`]);

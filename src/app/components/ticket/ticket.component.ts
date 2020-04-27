@@ -27,6 +27,9 @@ export class TicketComponent implements OnInit {
       this.list = data.getFAQResult;
       this.options = this.list.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
     });
+    this.utils.getIPInfo().subscribe((data: any) => {
+
+    });
   }
 
   optionSelected(question: any) {
