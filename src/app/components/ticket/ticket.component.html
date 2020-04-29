@@ -14,6 +14,9 @@
     <textarea type="text" placeholder="Ex. I'm running into issues when..." aria-label="Issue" matInput rows="5"
       [formControl]="myControl" [(ngModel)]="description" required></textarea>
   </mat-form-field>
+  Severity:&nbsp;<mat-slider color="primary" min="1" max="4" step="1" [(ngModel)]="proirity"></mat-slider>&nbsp;
+  {{ proirity === 1 ? 'Non proirity' : proirity === 2 ? 'Low' : proirity === 3? 'Medium' : 'High'}}
+  <br>
   <button mat-raised-button  (click)="clear()" >Clear</button>&nbsp;
   <button mat-raised-button color="primary" (click)="createTicket()" [disabled]="!isFormVerified()">Submit Ticket</button>
   <div *ngIf="utils.isLocal()">

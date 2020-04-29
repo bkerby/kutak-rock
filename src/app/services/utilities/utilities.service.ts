@@ -21,6 +21,10 @@ export class UtilitiesService implements OnInit {
   }
 
   /* REST Service call functions */
+  getMachineId(ip: string) {
+    return this.http.get(`${Shared.baseUrl}/GetComputer/${ip}`, this.httpOptions);
+  }
+
   createTicket(subject: string, description: string, proirity: number, computerId: number) {
     return this.http.get(`${Shared.baseUrl}/CreateTicket/${subject}/${description}/${proirity}/${computerId}`, this.httpOptions);
   }
