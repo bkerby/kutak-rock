@@ -14,8 +14,7 @@ export class TicketComponent implements OnInit {
   options: any[] = [];
   subject = '';
   description = '';
-  proirity = 0;
-  computerId = 6;
+  proirity = 2;
   myControl: FormControl = new FormControl();
   waitingForResponse = false;
   confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent>;
@@ -27,9 +26,6 @@ export class TicketComponent implements OnInit {
       this.list = data.getFAQResult;
       this.options = this.list.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
     });
-    this.utils.getIPInfo().subscribe((data: any) => {
-
-    });
   }
 
   optionSelected(question: any) {
@@ -38,23 +34,27 @@ export class TicketComponent implements OnInit {
 
   createTicket() {
     this.waitingForResponse = true;
-    this.utils.createTicket(this.subject, this.description, this.proirity, this.computerId).subscribe(
-      (response) => {
-        this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
-          data: response
-        });
-        this.confirmationDialogRef.afterClosed().subscribe(() => {
-          this.clear();
-          this.utils.goToHome();
-        });
-        console.log(response);
-        this.waitingForResponse = false;
-      },
-      (error) => {
-        console.log(error);
-        this.waitingForResponse = false;
-        this.utils.openSnackBar('Error: please try again', null);
+    this.utils.getIPInfo().subscribe((ip: any) => {
+      this.utils.getMachineId(ip.ip).subscribe((id: any) => {
+        this.utils.createTicket(this.subject, this.description, this.proirity, id.GetComputerResult).subscribe(
+          (response) => {
+            this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
+              data: response
+            });
+            this.confirmationDialogRef.afterClosed().subscribe(() => {
+              this.clear();
+              this.utils.goToHome();
+            });
+            console.log(response);
+            this.waitingForResponse = false;
+          },
+          (error) => {
+            console.log(error);
+            this.waitingForResponse = false;
+            this.utils.openSnackBar('Error: please try again', null);
+          });
       });
+    });
   }
 
   isFormVerified(): boolean {
