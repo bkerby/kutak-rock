@@ -25,7 +25,6 @@ export class FaqSolutionComponent implements OnInit, AfterViewInit {
       this.list = this.list.sort((a, b) => (a.asked < b.asked) ? 1 : -1);
       const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
       this.question = this.list.filter(i => i.id === id)[0];
-      console.log(this.question);
     });
   }
 

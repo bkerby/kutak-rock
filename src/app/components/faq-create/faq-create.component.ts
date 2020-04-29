@@ -20,10 +20,6 @@ export class FaqCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  log(str) {
-    console.log(str);
-  }
-
   addAnswer() {
     this.answers.push('');
   }
@@ -41,11 +37,10 @@ export class FaqCreateComponent implements OnInit {
   submitFAQ() {
     this.utils.createFAQ(this.subject, this.description).subscribe(
       (data: any) => {
-        console.log(data);
         this.answers.forEach((a) => {
           this.utils.createFAQAnswer(data.createFAQResult, a).subscribe(
-            (data) => { console.log(data) },
-            (error) => { this.utils.openSnackBar('Error: Try again later', null); }
+            (data) => { this.utils.openSnackBar('FAQ Submitted', null); this.clear(); },
+            (error) => { console.error(data); this.utils.openSnackBar('Error: Try again later', null); }
           );
         });
       },
