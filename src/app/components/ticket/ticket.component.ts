@@ -36,8 +36,11 @@ export class TicketComponent implements OnInit {
     this.waitingForResponse = true;
     this.utils.getIPInfo().subscribe((ip: any) => {
       this.utils.getMachineId(ip.ip).subscribe((id: any) => {
+        if (id.GetComputerResult === 1) {
+          this.utils.openSnackBar('Computer doesn\'t exist in database', null);
+        }
         this.utils.createTicket(this.subject, this.description, this.proirity, id.GetComputerResult).subscribe(
-          (response) => {
+          (response: any) => {
             this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
               data: response
             });
@@ -45,11 +48,10 @@ export class TicketComponent implements OnInit {
               this.clear();
               this.utils.goToHome();
             });
-            console.log(response);
             this.waitingForResponse = false;
           },
           (error) => {
-            console.log(error);
+            console.error(error);
             this.waitingForResponse = false;
             this.utils.openSnackBar('Error: please try again', null);
           });

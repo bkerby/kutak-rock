@@ -23,9 +23,6 @@
     <br>
     <button mat-raised-button (click)="clear()">Clear</button>&nbsp;
     <button mat-raised-button color="primary" (click)="submitFAQ()">Submit FAQ</button>
-    <div *ngIf="utils.isLocal()">
-        <button (click)="log(answers)">Error test</button>
-    </div>
 </div>
 <div *ngIf="waitingForResponse" class="overlay">
     <div class="center">
