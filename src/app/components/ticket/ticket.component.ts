@@ -34,21 +34,30 @@ export class TicketComponent implements OnInit {
 
   createTicket() {
     this.waitingForResponse = true;
-    this.utils.getIPInfo().subscribe((ip: any) => {
-      this.utils.getMachineId(ip.ip).subscribe((id: any) => {
-        if (id.GetComputerResult === 1) {
+    this.utils.getIPInfo().subscribe((publicIP: any) => {
+      this.utils.getMachineId(publicIP.ip).subscribe((machineId: any) => {
+        if (machineId.GetComputerResult === 1) {
           this.utils.openSnackBar('Computer doesn\'t exist in database', null);
         }
-        this.utils.createTicket(this.subject, this.description, this.proirity, id.GetComputerResult).subscribe(
-          (response: any) => {
-            this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
-              data: response
-            });
-            this.confirmationDialogRef.afterClosed().subscribe(() => {
-              this.clear();
-              this.utils.goToHome();
-            });
-            this.waitingForResponse = false;
+        this.utils.createTicket(this.subject, this.description, this.proirity, machineId.GetComputerResult).subscribe(
+          (ticketId: any) => {
+            this.utils.sendTicket(parseInt(ticketId.createTicketResult)).subscribe(
+              (result: any) => {
+                this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent, {
+                  data: result
+                });
+                this.confirmationDialogRef.afterClosed().subscribe(() => {
+                  this.clear();
+                  this.utils.goToHome();
+                });
+
+                this.waitingForResponse = false;
+              },
+              (error) => {
+                console.error(error);
+                this.waitingForResponse = false;
+                this.utils.openSnackBar('Error: please try again', null);
+              });
           },
           (error) => {
             console.error(error);

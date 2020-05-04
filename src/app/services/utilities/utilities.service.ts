@@ -28,7 +28,10 @@ export class UtilitiesService implements OnInit {
   createTicket(subject: string, description: string, proirity: number, computerId: number) {
     return this.http.get(`${Shared.baseUrl}/CreateTicket/${subject}/${description}/${proirity}/${computerId}`, this.httpOptions);
   }
-
+  
+  sendTicket(ticketId: number) {
+    return this.http.get(`${Shared.baseUrl}/SendTicket/${ticketId}`, this.httpOptions);
+  }
   getFAQ() {
     return this.http.get(`${Shared.baseUrl}/GetFAQ`, this.httpOptions);
   }
