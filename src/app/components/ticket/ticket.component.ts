@@ -36,7 +36,7 @@ export class TicketComponent implements OnInit {
     this.waitingForResponse = true;
     this.utils.getIPInfo().subscribe((publicIP: any) => {
       this.utils.getMachineId(publicIP.ip).subscribe((machineId: any) => {
-        if (machineId.GetComputerResult === 1) {
+        if (machineId.GetComputerResult === "1") {
           this.utils.openSnackBar('Computer doesn\'t exist in database', null);
         }
         this.utils.createTicket(this.subject, this.description, this.proirity, machineId.GetComputerResult).subscribe(

@@ -29,6 +29,11 @@
         <a mat-list-item href="tel:4029308000">External: (402) 930-8000</a>
         <a mat-list-item href="mailto:helpdesk@kutakrock.com">helpdesk@kutakrock.com</a>
       </mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <h1 matSubheader>MACHINE INFO</h1>
+        <a mat-list-item (click)="openMachineInformationDialog()">Local Machine Information</a>
+      </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>

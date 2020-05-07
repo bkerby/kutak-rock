@@ -15,6 +15,7 @@ import { FilterPipe } from './shared/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { UtilitiesService } from './services/utilities/utilities.service';
 import { FaqCreateComponent } from './components/faq-create/faq-create.component';
+import { MachineInfoDialogComponent } from './components/machine-info-dialog/machine-info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,11 @@ import { FaqCreateComponent } from './components/faq-create/faq-create.component
     HomeComponent,
     FaqListComponent,
     FaqSolutionComponent,
+    FaqCreateComponent,
     TicketComponent,
     ConfirmationDialogComponent,
+    MachineInfoDialogComponent,
     FilterPipe,
-    FaqCreateComponent
   ],
   imports: [
     MaterialModule,
@@ -40,7 +42,8 @@ import { FaqCreateComponent } from './components/faq-create/faq-create.component
     FilterPipe
   ],
   entryComponents: [
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    MachineInfoDialogComponent
   ],
   providers: [],
   bootstrap: [

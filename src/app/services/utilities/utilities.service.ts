@@ -25,6 +25,10 @@ export class UtilitiesService implements OnInit {
     return this.http.get(`${Shared.baseUrl}/GetComputer/${ip}`, this.httpOptions);
   }
 
+  getMachineInfo(id: string) {
+    return this.http.get(`${Shared.baseUrl}/GetMachineInfo/${id}`, this.httpOptions);
+  }
+
   createTicket(subject: string, description: string, proirity: number, computerId: number) {
     return this.http.get(`${Shared.baseUrl}/CreateTicket/${subject}/${description}/${proirity}/${computerId}`, this.httpOptions);
   }
@@ -63,7 +67,9 @@ export class UtilitiesService implements OnInit {
   }
 
   openSnackBar(msg: string, act: string) {
-    this.snackBar.open(msg, act);
+    this.snackBar.open(msg, act, {
+      duration: 2000,
+    });
   }
 
   isLocal() {

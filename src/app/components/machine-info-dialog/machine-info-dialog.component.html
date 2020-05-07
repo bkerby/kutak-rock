@@ -1,0 +1,62 @@
+<div *ngIf="data.machineId === '1'">
+  <div class="center" mat-dialog-content>
+    <img id="kutak-rock" src="../../../assets/kutakRock.png" alt="KutakRock">
+    <h3>Your machine was not found in the system.</h3>
+    <h3>Please contact the help desk in order </h3>
+    <h3>to download the necessary tools.</h3>
+    <h3>Thanks you!</h3>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+  </div>
+</div>
+<div *ngIf="data.machineId !== '1'">
+  <div class="center" mat-dialog-content>
+    <img id="kutak-rock" src="../../../assets/kutakRock.png" alt="KutakRock">
+    <table>
+      <tr>
+        <td>BIOSNumber</td>
+        <td>{{ machineInfo?.getMachineinfoResult.BIOSNumber }}</td>
+      </tr>
+      <tr>
+        <td>BIOSVersion</td>
+        <td>{{ machineInfo?.getMachineinfoResult.BIOSVersion }}</td>
+      </tr>
+      <tr>
+        <td>OSName</td>
+        <td>{{ machineInfo?.getMachineinfoResult.OSName }}</td>
+      </tr>
+      <tr>
+        <td>Public IP</td>
+        <td>{{ data.publicIP }}</td>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>{{ machineInfo?.getMachineinfoResult.id }}</td>
+      </tr>
+      <tr>
+        <td>macAddress</td>
+        <td>{{ machineInfo?.getMachineinfoResult.macAddress }}</td>
+      </tr>
+      <tr>
+        <td>manufacturer</td>
+        <td>{{ machineInfo?.getMachineinfoResult.manufacturer }}</td>
+      </tr>
+      <tr>
+        <td>model</td>
+        <td>{{ machineInfo?.getMachineinfoResult.model }}</td>
+      </tr>
+      <tr>
+        <td>ramAmount</td>
+        <td>{{ machineInfo?.getMachineinfoResult.ramAmount }}</td>
+      </tr>
+      <tr>
+        <td>userName</td>
+        <td>{{ machineInfo?.getMachineinfoResult.userName }}</td>
+      </tr>
+    </table>
+  </div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div>
+</div>
